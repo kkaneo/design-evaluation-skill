@@ -1,0 +1,45 @@
+# 评价条目 C19 · 营销与推荐干扰
+# 归属：商业转化（参考视角）；维护处：knowledge/criteria/
+id: C19
+name: 营销与推荐干扰
+version: 0.1
+domain: { primary: D3 产品目标与用户行为, secondary: [D1 用户任务与可用性] }
+perspective: 商业转化
+
+applicable_context:
+  page_types: [订单确认页, 支付方式页, 配送信息页]
+  user_tasks: [核对订单, 输入信息, 完成支付]
+  user_states: [任意]
+
+evaluation_goal: 结算主任务路径上不引入非必要的新决策
+
+check_questions:
+  - 推荐商品、会员开通提示、交叉销售是否出现在主任务路径的主视觉区域？
+  - 是否在支付 / 配送等关键步骤之前弹出或插入新的营销决策？
+  - 干扰元素是否可以不假思索地绕过？
+
+judgment_rules:
+  problem_if: 营销模块位于支付 / 核对步骤的主视觉路径且需要主动绕过；弹层中断输入流程
+  not_a_problem_if: 推荐出现在流程完成后的成功页，或明确的次要区域
+  severity_conditions:
+    - 弹层中断表单输入
+    - 营销内容遮挡关键交易信息
+
+sources:
+  - source: "Baymard 原则（经 grow.online / volanea 等二手引述）"
+    claim: "交叉销售等内容应移至主转化区之下；CTA 之上的每个干扰都在损耗转化；避免让用户在完成已做决策的过程中做新决策"
+    evidence_strength: E2（二手引述）
+    verification: 待核实
+    access_note: 二手引述仅提供视角参考，不单独支撑 problem_if 判定；核对 Baymard 原文后方可升格
+
+evidence_requirements:
+  e1_minimum: [各步骤截图, 营销元素的层级与位置标注]
+  cannot_conclude_without: 推荐点击与结算完成的行为数据
+
+boundaries:
+  - 推荐的业务价值本身不评（业务决策）
+  - "移除一切干扰"不是正确方向——信任线索不是干扰（退货政策、支付 logos 是决策依据），本条目与 C15 / C16 存在目标层张力，是典型 Trade-off 判例
+  - 不能推断推荐对转化的净影响（E3）
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: [结算完成率, 营销元素点击率与完成时间的关系, 主任务路径的绕行操作数]

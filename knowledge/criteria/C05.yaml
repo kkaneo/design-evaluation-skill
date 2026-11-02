@@ -1,0 +1,52 @@
+# 评价条目 C05 · 优惠信息干扰
+# 归属：费用与优惠理解（参考视角）；维护处：knowledge/criteria/
+id: C05
+name: 优惠信息干扰
+version: 0.1
+domain: { primary: D3 产品目标与用户行为, secondary: [D1 用户任务与可用性] }
+perspective: 优惠发现与理解
+
+applicable_context:
+  page_types: [订单确认页, 支付方式页]
+  user_tasks: [核对订单, 使用优惠, 完成支付]
+  user_states: [持有优惠码, 无优惠需求]
+
+evaluation_goal: 降低非必要注意力消耗，保障结算主任务连续性
+
+check_questions:
+  - 优惠码输入框 / 推荐内容是否在默认视图中占据显著位置？
+  - 无优惠需求的用户能否无视优惠区、不假思索地继续结算？
+  - 优惠相关元素与主 CTA 是否争夺同一视觉层级？
+
+judgment_rules:
+  problem_if: >
+    优惠区在默认状态展开、位于主任务路径视觉焦点，
+    或其面积 / 视觉层级超过辅助信息应有的水平
+  not_a_problem_if: >
+    入口处于折叠或弱化状态，且可发现性由其他条目（如 C04）另行保障
+  severity_conditions:
+    - 遮挡或推挤关键交易信息（金额、错误提示）
+    - 打断表单输入流程
+
+sources:
+  - source: "Baymard Institute, Checkout Usability 研究（优惠码字段与结算干扰）"
+    claim: "显露的优惠码输入框可能促使部分用户暂停结算去寻找优惠码，甚至离开流程"
+    evidence_strength: E2（大样本测试观察，非针对当前设计的实测）
+    access_note: 报告主体付费；引用前核对公开博客原文的确切表述
+
+evidence_requirements:
+  e1_minimum:
+    - 默认状态截图（含滚动位置）
+    - 优惠区与主 CTA 的位置、面积、视觉层级
+  cannot_conclude_without: 真实用户行为数据
+
+boundaries:
+  - 不能仅凭本条目推断"应删除 / 弱化优惠入口"——入口价值由 C04 独立评价
+  - 不能推断对购买转化率的实际影响（E3 范畴）
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs:
+  - 结算完成时间（无优惠需求用户）
+  - 优惠发现率（有优惠需求用户）
+  - 优惠使用率
+  - 结算放弃点分布

@@ -1,0 +1,55 @@
+# 评价条目 C15 · 支付安全线索
+# 归属：交易信任与风险（参考视角）；维护处：knowledge/criteria/
+id: C15
+name: 支付安全线索
+version: 0.1
+domain: { primary: D3 产品目标与用户行为, secondary: [D4 信息与视觉表达] }
+perspective: 信任与风险感知
+
+applicable_context:
+  page_types: [支付方式页, 订单确认页]
+  user_tasks: [输入支付信息, 完成支付]
+  user_states: [首次购物, 对信息安全敏感]
+
+evaluation_goal: 在用户产生犹豫的时刻降低交易风险感知
+
+check_questions:
+  - 安全指示（加密说明、支付方式 logos、平台背书）是否在输入敏感信息的区域内或紧邻主按钮可见？
+  - 是否存在伪造紧迫性元素（会重置的倒计时、虚假库存提示）？
+  - 信任线索是否过度堆砌，反而增加视觉噪音？
+
+judgment_rules:
+  problem_if: >
+    输入卡号 / 敏感信息的可见视口内没有任何安全线索；
+    或存在伪造紧迫性 / 施压模式
+  not_a_problem_if: >
+    线索紧邻支付表单且克制（少量、可识别），界面本身清晰可预测
+  severity_conditions:
+    - 伪造紧迫性元素
+    - 安全线索与主按钮完全分离、需滚动寻找
+
+sources:
+  - source: "Baymard, Payment UX（信任信号研究）"
+    claim: "用户对支付步骤的信任来自界面的清晰、可预测与透明，而非徽章堆砌；更强的信任构建是明确的下一步标注、无意外跳转、无隐藏成本与后期新增条件"
+    evidence_strength: E2（大样本可用性测试观察）
+  - source: "Baymard, 50 项购物车放弃研究汇编（2026）"
+    claim: "19% 的放弃者因'不信任该网站的信用卡信息处理'而离开"
+    evidence_strength: E2（问卷自述数据，非行为实测）
+  - source: "行业实践（vendor 博客，弱依据）"
+    claim: "倒计时重置、虚假稀缺等施压模式损害信任"
+    evidence_strength: E2（待专家校准）
+    verification: 待核实
+    access_note: 仅作行业实践参考，不作为条目主要依据
+
+evidence_requirements:
+  e1_minimum:
+    - 支付区域截图（标注可见视口范围）
+    - 安全线索元素的位置清单
+  cannot_conclude_without: 用户信任感知的实测数据
+
+boundaries:
+  - 不能断定"增加信任徽章能提升转化"——徽章效果的实证结论存在争议
+  - 不能推断信任感知的实际水平（E3 范畴）
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: [支付步骤完成率, 支付前犹豫时长（停顿行为）, 感知信任量表]

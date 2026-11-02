@@ -1,0 +1,47 @@
+# 评价条目 C16 · 交易保障与风险消解信息
+# 归属：交易信任与风险（参考视角）；维护处：knowledge/criteria/
+id: C16
+name: 交易保障与风险消解信息
+version: 0.1
+domain: { primary: D3 产品目标与用户行为, secondary: [D1 用户任务与可用性] }
+perspective: 信任与风险感知
+
+applicable_context:
+  page_types: [订单确认页, 支付方式页]
+  user_tasks: [核对订单, 完成支付, 事后修改或求助]
+  user_states: [首次购物, 高客单价订单]
+
+evaluation_goal: 让用户在产生疑虑时能就近获得风险消解信息
+
+check_questions:
+  - 退款 / 退货政策是否在结算流程内可一句话理解并获得（而非仅页脚链接）？
+  - 订单提交后的修改途径与客服求助入口是否可得？
+  - 支付方式相关的限制条件是否在最终确认前披露？
+
+judgment_rules:
+  problem_if: 保障信息仅存在于页脚 / 独立页面，或以密集法律文本呈现于决策点
+  not_a_problem_if: 一句话摘要 + 链接在订单摘要附近可得
+  severity_conditions:
+    - 结算流程内完全无退款政策入口
+    - 支付限制在提交后才出现
+
+sources:
+  - source: "Baymard, Checkout UX 指南检查项"
+    claim: "退货 / 退款政策应可从结算页访问；安全指示应在支付表单附近可见"
+    evidence_strength: E2
+  - source: "Baymard, 放弃原因数据（2026）"
+    claim: "13% 因退货 / 取消政策不满意而放弃"
+    evidence_strength: E2（自述数据）
+
+evidence_requirements:
+  e1_minimum:
+    - 结算各状态截图
+    - 保障信息元素的位置与层级
+  cannot_conclude_without: 政策实际被阅读 / 使用的行为数据
+
+boundaries:
+  - 政策本身的宽松程度是业务决策，本条目只评"可得性与可理解性"
+  - 不能推断政策满意度（需 E3）
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: [保障信息查找时间, 结算放弃点分布, 感知风险量表]

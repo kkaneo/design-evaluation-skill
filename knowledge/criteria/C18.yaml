@@ -1,0 +1,46 @@
+# 评价条目 C18 · 优惠规则理解
+# 归属：费用与优惠理解（参考视角）；维护处：knowledge/criteria/
+id: C18
+name: 优惠规则理解
+version: 0.1
+domain: { primary: D2 用户认知与体验, secondary: [D3 产品目标与用户行为] }
+perspective: 费用与优惠理解
+
+applicable_context:
+  page_types: [优惠券选择, 订单确认页]
+  user_tasks: [使用优惠, 核对订单]
+  user_states: [持有优惠券, 看到优惠提示后产生优惠预期]
+
+evaluation_goal: 用户在选择前能理解优惠条件，失败时能明确原因
+
+check_questions:
+  - 优惠使用条件（门槛、有效期、叠加 / 排斥限制）是否在选择前可知？
+  - 优惠码 / 券应用失败时，是否给出具体原因（过期 / 未达门槛 / 不可叠加）？
+  - 规则说明是否需要离开结算流程才能看到？
+
+judgment_rules:
+  problem_if: 规则仅存在于站外详情页，或需试错才能得知；失败仅提示"无效"
+  not_a_problem_if: 选择时同屏可见关键条件，失败原因具体可行动
+  severity_conditions:
+    - 优惠应用成功但用户误解了实际折扣（金额与预期不符）
+
+sources:
+  - source: "Baymard, Grocery Ecommerce Benchmark（已核对公开原文）"
+    claim: "默认展示的优惠码字段会干扰主任务；'找优惠码'是测试中持续出现的问题；隐藏在链接后表现良好，且真正持有优惠码的用户总能找到入口"
+    evidence_strength: E2
+  - source: "Garrison Martin 引述 Baymard 结算研究（二手）"
+    claim: "隐藏折扣规则 → 用户猜测失败原因 → 支付附近信任下降；70% 的站点有优惠码字段，部分用户看到后离开站点搜索优惠码"
+    evidence_strength: E2（二手引述）
+    verification: 待核实
+    access_note: 二手引述仅提供视角参考，不单独支撑 problem_if 判定；核对 Baymard 原文后方可升格
+
+evidence_requirements:
+  e1_minimum: [优惠券选择状态截图, 规则说明的呈现位置, 失败提示文案]
+  cannot_conclude_without: 规则理解程度的用户测试
+
+boundaries:
+  - 优惠规则的业务设计（门槛高低、能否叠加）不在评审范围，只评"可知性"
+  - 不能推断规则复杂度对使用率的影响（E3）
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: [优惠使用成功率, 规则理解正确率, 优惠失败后的恢复率]
