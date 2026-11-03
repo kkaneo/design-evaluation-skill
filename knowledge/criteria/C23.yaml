@@ -1,0 +1,43 @@
+# 评价条目 C23 · 文字对比度与可读性
+# 归属：视觉表达（D4）；E1 可机检条目（对比度可由取色计算）
+id: C23
+name: 文字对比度与可读性
+version: 0.1
+domain: { primary: D4 信息与视觉表达, secondary: [D5 无障碍与包容性] }
+perspective: 视觉表达
+
+applicable_context:
+  page_types: [任意]
+  user_tasks: [阅读信息, 核对金额]
+  user_states: [任意, 含弱视/强光环境]
+
+evaluation_goal: 文字与背景的对比度达到可读标准，正文字号与行高支撑连续阅读
+
+check_questions:
+  - 正文文字与背景的对比度是否 ≥ 4.5:1？大号文字（≥18pt 或 14pt 粗体）是否 ≥ 3:1？
+  - 关键交易信息（金额、费用明细）是否使用低于正文层级的浅色/弱化样式？
+  - 行高与字间距是否支撑多行阅读？
+
+judgment_rules:
+  problem_if: 对比度低于 WCAG 2.2 SC 1.4.3 阈值（可计算核查，E1）；关键金额使用弱化样式影响核对
+  not_a_problem_if: 各层级文字对比度达标，弱化样式仅用于确实次要的辅助信息
+  severity_conditions:
+    - 金额或费用明细低于正文对比度（直接影响核对任务）
+
+sources:
+  - source: "WCAG 2.2 SC 1.4.3 Contrast (Minimum)"
+    claim: "正文文字对比度至少 4.5:1，大文字至少 3:1"
+    evidence_strength: E1（明确规范，可计算验证）
+    verification: 已核实（w3.org/TR/WCAG22）
+
+evidence_requirements:
+  e1_minimum: [文字与背景色值（Figma 属性或取色）]
+  cannot_conclude_without: 无（对比度为确定性判定）
+
+boundaries:
+  - 达标不等于"易读体验好"——字号、字体、行高仍需 E2 判断
+  - 装饰性文字（如背景水印）不在本条目范围
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: []
+machine_check: true  # 可由视觉引擎/脚本确定性判定

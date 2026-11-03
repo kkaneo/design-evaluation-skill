@@ -1,0 +1,47 @@
+# 评价条目 C22 · 视觉层级与第一落点
+# 归属：视觉表达（D4）；批次：视觉评估层 v0.1（2026-11-03）
+id: C22
+name: 视觉层级与第一落点
+version: 0.1
+domain: { primary: D4 信息与视觉表达, secondary: [D1 用户任务与可用性] }
+perspective: 视觉表达
+
+applicable_context:
+  page_types: [任意含主操作任务的页面]
+  user_tasks: [识别主操作, 核对关键信息]
+  user_states: [任意]
+
+evaluation_goal: 视觉权重分布与任务优先级一致，用户第一眼落在核心信息或主操作上
+
+check_questions:
+  - 主要 CTA 在尺寸、色彩对比、位置上的视觉权重是否显著高于一切次要操作？
+  - 关键信息（如金额、错误提示）的视觉权重是否低于装饰性或营销性元素？
+  - 页面是否存在多个相互竞争的强视觉焦点？
+
+judgment_rules:
+  problem_if: 主 CTA 与次要操作视觉权重接近无法区分主次；核心交易信息被更高对比度的非任务元素压制
+  not_a_problem_if: 权重顺序与任务卡的主要目标一致，且强焦点唯一
+  severity_conditions:
+    - 主 CTA 权重低于营销元素（用户可能被引离主任务）
+    - 金额与 CTA 竞争同一层级导致误读
+
+sources:
+  - source: "PRISM (Adobe Research): Principle-aware Interpretable Multi-scale Evaluation of Visual Designs"
+    claim: "视觉设计可按可感知的设计原则（层级、对齐、留白等）进行多尺度、可解释的评估"
+    evidence_strength: E2
+    verification: 已核实（公开论文）
+  - source: "WiserUI-Bench WUI-141 (GRENE) / WUI-253 (nameOn)"
+    claim: "加大购买按钮并置于迷你购物车顶部（Fitts's Law）的真实 A/B 胜出"
+    evidence_strength: E3（真实行为数据，非本设计实测）
+    verification: 已核对（登记册 knowledge/evidence/）
+
+evidence_requirements:
+  e1_minimum: [页面截图, CTA 与关键元素的尺寸/颜色/位置对比]
+  cannot_conclude_without: 注意力分布数据（眼动/点击热区）
+
+boundaries:
+  - 层级判断相对任务卡的目标而言，不存在"绝对正确"的层级
+  - 不能仅凭截图推断实际注意力分布（E3 范畴）
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: [首屏注意力落点, 主 CTA 点击率, 关键信息回视率]

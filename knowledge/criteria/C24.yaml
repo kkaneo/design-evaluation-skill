@@ -1,0 +1,46 @@
+# 评价条目 C24 · 对齐与网格结构
+# 归属：视觉表达（D4）
+id: C24
+name: 对齐与网格结构
+version: 0.1
+domain: { primary: D4 信息与视觉表达 }
+perspective: 视觉表达
+
+applicable_context:
+  page_types: [任意]
+  user_tasks: [浏览, 核对信息]
+  user_states: [任意]
+
+evaluation_goal: 元素按一致的网格与对齐线组织，形成结构感与专业感
+
+check_questions:
+  - 同类信息块的左右边缘是否对齐到共同的参考线？
+  - 页面是否存在明显游离于网格之外的元素（错位、悬空）？
+  - 卡片/分组的内边距与外边距是否遵循一致的标度？
+
+judgment_rules:
+  problem_if: 同列表项边缘错位、卡片内边距不一致、明显游离元素破坏结构
+  not_a_problem_if: 对齐线一致，间距遵循可识别的标度节奏
+  severity_conditions:
+    - 错位出现在金额/数字列表（影响扫读核对）
+
+sources:
+  - source: "PRISM (Adobe Research)"
+    claim: "对齐（alignment）是可感知、可评估的核心视觉设计原则之一"
+    evidence_strength: E2
+    verification: 已核实（公开论文）
+  - source: "格式塔连续性法则 (Gestalt Continuity)"
+    claim: "对齐排列的元素被知觉为连续整体，错位破坏整体感"
+    evidence_strength: E2
+    verification: 已核实（经典知觉理论）
+
+evidence_requirements:
+  e1_minimum: [页面截图, 明显错位的元素位置标注]
+  cannot_conclude_without: 无（明显错位可截图核查）
+
+boundaries:
+  - 有意的错位/打破网格属于设计语言选择，须对照任务卡的暂不评审范围判断
+  - 亚像素级误差不在评审范围
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: []

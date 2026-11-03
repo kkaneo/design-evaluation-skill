@@ -1,0 +1,219 @@
+# WiserUI-Bench 结算页证据登记册（evidence_cases 数据源）
+# 来源: github.com/jeochris/wiserui-bench (CC BY-NC-SA 4.0, 非商业研究)
+# 约定: 图片不随库分发，仅存 source URL；本文件由 checkout-evidence-subset.json 生成 (2026-11-03)
+# 核验: 元数据已核对；rationale 为数据集自带专家解释（含设计法则引用）
+
+cases:
+  - case_id: WUI-141
+    mapped_criteria: ['C01', 'C13']
+    company: GRENE
+    source_url: https://vwo.com/success-stories/grene/
+    ui_change:
+      Button: ['Position', 'Size']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    rationale:
+      - law: Fitts’s Law (Action)
+        reason: The large size of the purchase button and its placement at the top of the mini cart make it easy and quick for users to click, thereby enhancing usability.
+    evidence_strength: E3
+
+  - case_id: WUI-154
+    mapped_criteria: ['C03']
+    company: PayU
+    source_url: https://vwo.com/success-stories/payu/
+    ui_change:
+      Input Field: ['Presence', 'Count']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    rationale:
+      - law: Hick’s Law (Action)
+        reason: By removing the email address field, the modification reduces the necessary input number, simplifying the user's decision-making process. This makes completing the checkout process faster.
+      - law: Miller’s Law (Memory)
+        reason: The original version required users to remember and input two pieces of information (email and phone number), which could exceed cognitive load for some users. The modification simplifies this to one, making it easier to handle.
+    evidence_strength: E3
+
+  - case_id: WUI-156
+    mapped_criteria: ['C03', 'C13']
+    company: Flying Scot Parking
+    source_url: https://vwo.com/success-stories/flying-scot/
+    ui_change:
+      Card: ['Presence', 'Color']
+      Input Field: ['Text Content']
+      Button: ['Presence']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    rationale:
+      - law: Law of Prägnanz (Perception)
+        reason: The modified version simplifies the form by removing unnecessary fields, making it easier for users to understand and complete the task.
+      - law: Hick’s Law (Action)
+        reason: By reducing the number of form fields, the modified version decreases the complexity of choices, leading to faster decision-making and actions from users.
+      - law: Fitts’s Law (Action)
+        reason: The larger size of the back and continue buttons makes them easier to click, improving user interaction and navigation.
+    evidence_strength: E3
+
+  - case_id: WUI-198
+    mapped_criteria: ['C03', 'C09']
+    company: Optimeria
+    source_url: https://vwo.com/success-stories/slideshop/
+    ui_change:
+      Input Field: ['Text Content']
+      Icon: ['Presence']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    rationale:
+      - law: Law of Common Region (Perception)
+        reason: Clearly explaining the purpose of the email input field simplifies the checkout process and reduces the user's cognitive effort.
+      - law: Law of Proximity (Perception)
+        reason: Placing major concerns and reassurance elements close to the call-to-action button helps users quickly identify the relationship between their concerns and the next step in the checkout process.
+      - law: Goal-Gradient Effect (Action)
+        reason: Providing clear reassurance elements and progress indicators makes users feel closer to completing their purchase, motivating them to finish the checkout process.
+    evidence_strength: E3
+
+  - case_id: WUI-224
+    mapped_criteria: ['C03', 'C05']
+    company: Bionic Gloves
+    source_url: https://vwo.com/success-stories/bionic/
+    ui_change:
+      Input Field: ['Presence']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    usage_note: 与 C05 的 Baymard 主张互证：移除优惠码输入框的真实 A/B 胜出案例
+    rationale:
+      - law: Law of Prägnanz (Perception)
+        reason: The shopping cart page is simplified by removing the 'special offer' and 'gift card' code boxes, which reduces cognitive load and makes it easier for users to focus on completing their purchase.
+      - law: Hick’s Law (Action)
+        reason: By eliminating the discount code input field, the number of choice variables is reduced, resulting in fewer choices presented to the user, which in turn shortens decision time and makes the checkout process more efficient.
+      - law: Miller’s Law (Memory)
+        reason: Limiting the number of elements on the page helps users stay within their cognitive load capacity and prevents feelings of being overwhelmed.
+      - law: Jakob’s Law (Memory)
+        reason: The modified version aligns with user expectations for a streamlined checkout process, as many users are accustomed to a simpler cart design without unnecessary fields.
+    evidence_strength: E3
+
+  - case_id: WUI-227
+    mapped_criteria: ['C06']
+    company: One Click Ventures
+    source_url: https://vwo.com/success-stories/one-click/
+    ui_change:
+      Text: ['Text Content']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    rationale:
+      - law: Law of Prägnanz (Perception)
+        reason: By displaying personalized information according to the user's location, it simplifies the information, making it easier for users to understand and engage with the content.
+      - law: Jakob’s Law (Memory)
+        reason: By providing localized content, a familiar approach that users have experienced with similar personalized interfaces, it meets user expectations.
+      - law: Law of Proximity (Perception)
+        reason: By grouping related information together based on the user's location, it increases relevance and enhances user understanding.
+    evidence_strength: E3
+
+  - case_id: WUI-229
+    mapped_criteria: ['C02', 'C03']
+    company: BliVakker.No
+    source_url: https://vwo.com/success-stories/blivakker/
+    ui_change:
+      Card: ['Presence']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    usage_note: 移除社交登录选项——C02 登录干扰的真实案例
+    rationale:
+      - law: Hick’s Law (Action)
+        reason: By removing the Facebook login option, the decision-making process for users was simplified, reducing the number of choices and accelerating the checkout process.
+      - law: Miller’s Law (Memory)
+        reason: By eliminating the Facebook login, the checkout page reduced the elements that users had to process, preventing cognitive overload and making it easier for users to complete their purchases.
+    evidence_strength: E3
+
+  - case_id: WUI-233
+    mapped_criteria: ['C06', 'C13']
+    company: Dorado Fashion
+    source_url: https://vwo.com/success-stories/dorado-fashion/
+    ui_change:
+      Text: ['Presence']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    rationale:
+      - law: Von Restorff Effect (Memory)
+        reason: A unique notification stands out among other elements in the mini cart, capturing the user's attention and making it more memorable, which can encourage additional purchases.
+      - law: Jakob’s Law (Memory)
+        reason: Changes align with user expectations regarding the receipt of suggestions and discounts during the checkout process, leveraging familiar patterns to enhance user experience.
+      - law: Goal-Gradient Effect (Action)
+        reason: Notifications provide clear progress indicators, motivating users to add one more product to their cart to receive a discount, thereby increasing the likelihood of completing the purchase.
+    evidence_strength: E3
+
+  - case_id: WUI-253
+    mapped_criteria: ['C01', 'C13']
+    company: nameOn
+    source_url: https://vwo.com/success-stories/nameon/
+    ui_change:
+      Button: ['Count', 'Presence', 'Color']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    rationale:
+      - law: Law of Prägnanz (Perception)
+        reason: A simplified design and a smaller number of CTAs reduce cognitive load, allowing users to focus on the primary action of continuing to checkout.
+      - law: Hick’s Law (Action)
+        reason: By reducing options from multiple CTAs to just two, the decision-making process is simplified, resulting in faster user actions.
+      - law: Von Restorff Effect (Memory)
+        reason: The unique blue color of the continue checkout button makes it stand out and captures attention, making it more memorable compared to other elements.
+      - law: Miller’s Law (Memory)
+        reason: With only two buttons, the design remains within the user's cognitive limit, preventing overload and facilitating easier decision-making.
+    evidence_strength: E3
+
+  - case_id: WUI-258
+    mapped_criteria: ['C13']
+    company: Uptowork (now Zety)
+    source_url: https://vwo.com/success-stories/uptowork/
+    ui_change:
+      Icon: ['Presence']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    rationale:
+      - law: Von Restorff Effect (Memory)
+        reason: The McAfee badge stands out as a unique element on the cart page, capturing attention and making it more memorable compared to other elements.
+      - law: Jakob’s Law (Memory)
+        reason: The McAfee badge leverages familiar symbols of trust encountered by users on other e-commerce sites, aligning with their expectations and reducing cognitive load.
+    evidence_strength: E3
+
+  - case_id: WUI-274
+    mapped_criteria: ['C13']
+    company: Uber
+    source_url: https://abtest.design/tests/clearer-pricing-estimate
+    ui_change:
+      Tile: ['Text Content', 'Border', 'Color']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    rationale:
+      - law: Law of Prägnanz (Perception)
+        reason: The single estimated price simplifies the information provided to the user, reducing cognitive effort and making the cost easier to understand.
+      - law: Law of Common Region (Perception)
+        reason: The bold black outline around the selected service creates a distinct boundary, helping users perceive it as an integrated group along with the relevant information below.
+      - law: Hick’s Law (Action)
+        reason: By reducing the price display to a single value from a range, it simplifies the decision-making process, accelerating user behavior and reducing hesitation.
+    evidence_strength: E3
+
+  - case_id: WUI-285
+    mapped_criteria: ['C19']
+    company: Kiss My Keto
+    source_url: https://abtest.design/tests/limited-time-discounts-for-cart-abandoners
+    ui_change:
+      Banner: ['Layout', 'Presence', 'Text Content']
+      Button: ['Presence', 'Color']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    usage_note: 反例证据：营销紧迫感弹窗在弃购召回场景胜出——说明 C19 的干扰判断依赖情境（Conditional），非一律删除
+    rationale:
+      - law: Von Restorff Effect (Memory)
+        reason: The red 'Can't resist' CTA button stands out compared to other elements, attracting attention and making it more memorable.
+      - law: Jakob’s Law (Memory)
+        reason: The modal window with a countdown timer aligns with the familiar pattern of urgency seen in e-commerce, making it easier for users to understand and engage.
+      - law: Goal-Gradient Effect (Action)
+        reason: The countdown timer creates a sense of urgency, motivating users to complete their purchase as they see the time ticking down.
+    evidence_strength: E3
+
+  - case_id: WUI-286
+    mapped_criteria: ['C13']
+    company: Chick-fil-A
+    source_url: https://abtest.design/tests/optimizing-clarity-of-payment-options
+    ui_change:
+      Button: ['Text Content', 'Color']
+      Card: ['Presence']
+    outcome: 胜出版本为 win_url 指向版本（真实 A/B 测试）
+    rationale:
+      - law: Law of Prägnanz (Perception)
+        reason: The new layout simplifies payment options, making it easier for users to understand choices without cognitive overload.
+      - law: Law of Similarity (Perception)
+        reason: Consistent color and text usage for the 'Pay with Credit Card' button aligns with user expectations, grouping it with other payment options.
+      - law: Law of Proximity (Perception)
+        reason: The 'Pay with Credit Card' button is located close to the 'Continue' button, reinforcing their relationship as part of the payment process.
+      - law: Hick’s Law (Action)
+        reason: By reducing the number of options (removing the 'Cancel Order' button), the decision-making process is simplified, allowing users to focus on completing their purchase.
+      - law: Von Restorff Effect (Memory)
+        reason: The larger and more prominent 'Pay with Icon' button is easier to click, enhancing user accessibility and action speed.
+    evidence_strength: E3

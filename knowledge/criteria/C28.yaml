@@ -1,0 +1,47 @@
+# 评价条目 C28 · 触控目标与操作可供性
+# 归属：视觉表达（D4）；E1 可机检条目（目标尺寸可测量）
+id: C28
+name: 触控目标与操作可供性
+version: 0.1
+domain: { primary: D4 信息与视觉表达, secondary: [D5 无障碍与包容性, D1 用户任务与可用性] }
+perspective: 视觉表达
+
+applicable_context:
+  page_types: [移动端任意含可交互元素的页面]
+  user_tasks: [点击, 选择, 返回]
+  user_states: [任意, 含移动/分心场景]
+
+evaluation_goal: 可交互元素的目标尺寸达标，且其可点击性通过视觉可供性明确传达
+
+check_questions:
+  - 可点击元素的触控目标是否 ≥ 24×24 CSS px（WCAG 2.5.8 最低）？推荐 ≥ 44pt（Apple HIG）？
+  - 图标按钮是否有足够的可供性线索（按钮形态、按压反馈样式）？
+  - 相邻可点击元素的间距是否足以避免误触？
+
+judgment_rules:
+  problem_if: 触控目标低于规范阈值（E1 可测量）；纯图标无可供性线索；相邻目标过近导致误触
+  not_a_problem_if: 目标尺寸与间距达标，可点击性表达清晰
+  severity_conditions:
+    - 误触会触发不可逆操作（如支付）
+
+sources:
+  - source: "WCAG 2.2 SC 2.5.8 Target Size (Minimum)"
+    claim: "指针目标的可交互区域至少 24×24 CSS px"
+    evidence_strength: E1（明确规范）
+    verification: 已核实（w3.org/TR/WCAG22）
+  - source: "Apple Human Interface Guidelines"
+    claim: "iOS 触控目标推荐最小 44×44 pt"
+    evidence_strength: E1（平台规范）
+    verification: 已核实
+
+evidence_requirements:
+  e1_minimum: [Figma 元素尺寸属性或截图测量]
+  cannot_conclude_without: 无（尺寸为确定性判定）；误触率需 E3
+
+boundaries:
+  - 达标不等于"好按"——实际误触率需用户测试
+  - Web 端 hover 场景的可供性判断与移动端不同
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: [误触率]
+machine_check: true

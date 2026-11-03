@@ -1,0 +1,45 @@
+# 评价条目 C29 · 浮层遮挡与弹窗侵入
+# 归属：视觉表达（D4）；E1 可机检条目（源自 UXBench 5 个确定性诊断任务）
+id: C29
+name: 浮层遮挡与弹窗侵入
+version: 0.1
+domain: { primary: D4 信息与视觉表达, secondary: [D6 技术与交互状态] }
+perspective: 视觉表达
+
+applicable_context:
+  page_types: [含浮层/弹窗/悬浮组件的任意页面]
+  user_tasks: [阅读内容, 完成主操作, 关闭弹窗]
+  user_states: [任意]
+
+evaluation_goal: 浮层不遮挡任务关键内容与操作，模态提供明确的退出方式
+
+check_questions:
+  - 悬浮组件（客服气泡、广告浮层）是否遮挡正文文本？
+  - 悬浮组件是否遮挡可点击元素（按钮、输入框、关闭控件）？
+  - 模态弹窗是否有明确的关闭控件？是否遮挡页面原生的关闭/返回按钮？
+  - 是否存在多个弹窗同时叠加？
+
+judgment_rules:
+  problem_if: 浮层遮挡文本或可点元素；弹窗无关闭控件；弹窗叠加（五项皆为 E1 可判定）
+  not_a_problem_if: 浮层不侵入任务关键区域，模态有明确且可达的退出方式
+  severity_conditions:
+    - 遮挡主 CTA 或金额信息
+    - 无任何退出方式的强制弹窗
+
+sources:
+  - source: "UXBench (Ant Group, CVPR 2026 Findings)：BubbleOcclT / BubbleOcclBtn / PopupNoClose / PopupBlock / PopupStack 五个诊断任务"
+    claim: "该五类缺陷可由视觉证据确定性诊断；标注经 4 位高级 UX 专家两轮校验；专用模型 UI-UX 达 79.63% 准确率"
+    evidence_strength: E1（视觉证据可判定，模型开源可本地部署）
+    verification: 已核实（公开论文与仓库）
+
+evidence_requirements:
+  e1_minimum: [含浮层状态的截图]
+  cannot_conclude_without: 无（遮挡与关闭控件为确定性判定）
+
+boundaries:
+  - 弹窗出现的"时机"是否合理属交互流程问题（C11/C19 范畴），本条目只判视觉侵入
+  - 有意设计的引导式弹窗需对照任务卡约束判断
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: []
+machine_check: true  # 推荐由 UI-UX 模型执行（五任务与其训练任务对齐）

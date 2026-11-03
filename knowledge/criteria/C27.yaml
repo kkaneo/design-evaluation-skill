@@ -1,0 +1,42 @@
+# 评价条目 C27 · 排版系统一致性
+# 归属：视觉表达（D4）
+id: C27
+name: 排版系统一致性
+version: 0.1
+domain: { primary: D4 信息与视觉表达 }
+perspective: 视觉表达
+
+applicable_context:
+  page_types: [任意含文字层级的页面]
+  user_tasks: [阅读, 扫读定位]
+  user_states: [任意]
+
+evaluation_goal: 字号、字重、字体家族构成可识别的系统，层级通过排版一致地表达
+
+check_questions:
+  - 标题/正文/辅助文字是否各自使用一致的字号与字重？
+  - 字体家族数量是否克制（通常 1–2 种）？
+  - 同一层级的信息在不同页面区域是否使用相同的排版样式？
+
+judgment_rules:
+  problem_if: 同层级信息使用不同字号/字重；字体家族过多；层级跳跃无规律（如辅助文字比正文更粗）
+  not_a_problem_if: 排版层级清晰且跨区域一致
+  severity_conditions:
+    - 排版不一致导致用户无法用样式快速定位信息类型
+
+sources:
+  - source: "PRISM (Adobe Research)"
+    claim: "排版（typography）一致性是可感知、可评估的视觉设计原则"
+    evidence_strength: E2
+    verification: 已核实（公开论文）
+
+evidence_requirements:
+  e1_minimum: [文字样式清单（Figma text styles 或截图测量）]
+  cannot_conclude_without: 无（样式不一致可核查）
+
+boundaries:
+  - 字体选型本身（品牌决策）不在范围，只评系统一致性
+  - 中西文混排的特殊处理需按目标市场惯例判断
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: [扫读定位时间]

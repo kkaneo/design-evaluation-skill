@@ -1,0 +1,43 @@
+# 评价条目 C30 · 界面内容一致性线索
+# 归属：视觉表达（D4）；E1 可机检条目（源自 UXBench 3 个可信度诊断任务）
+id: C30
+name: 界面内容一致性线索
+version: 0.1
+domain: { primary: D4 信息与视觉表达, secondary: [D3 产品目标与用户行为] }
+perspective: 视觉表达
+
+applicable_context:
+  page_types: [含徽标、入口、宣传文案的任意页面]
+  user_tasks: [识别服务来源, 建立信任, 完成交易]
+  user_states: [首次使用, 低信任状态]
+
+evaluation_goal: 界面各处对同一事物的表达一致，不产生"货不对板"的信任裂痕
+
+check_questions:
+  - 徽标/标签的内容与其实际落地内容是否一致（如"免费配送"徽标对应的真实规则）？
+  - 服务/产品名称在不同区域（列表、详情、支付页）是否一致？
+  - 宣传描述与实际功能是否一致（如"一键支付"实际需要多步）？
+
+judgment_rules:
+  problem_if: 徽标与落地内容、跨区域名称、宣传与功能任一不一致（E1 可截图比对）
+  not_a_problem_if: 同一事物在各处表达一致
+  severity_conditions:
+    - 不一致涉及价格、费用、保障类承诺（直接触发信任问题，关联 C15/C16）
+
+sources:
+  - source: "UXBench (Ant Group, CVPR 2026 Findings)：MismatchBadge / MismatchContent / MismatchFunc 三个可信度诊断任务"
+    claim: "内容不一致是可由视觉证据诊断的 UX 缺陷维度；标注经 4 位高级 UX 专家两轮校验"
+    evidence_strength: E1（视觉证据可判定）
+    verification: 已核实（公开论文与仓库）
+
+evidence_requirements:
+  e1_minimum: [涉及比对的多处截图]
+  cannot_conclude_without: 无（比对为确定性判定）；不一致对信任的影响需 E3
+
+boundaries:
+  - 跨页面一致性需要多状态截图（静态单页评审时标注"信息不足"）
+  - 文案润色级别的差异不算不一致
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: [信任感知量表, 内容一致性识别测试]
+machine_check: true  # 推荐由 UI-UX 模型执行

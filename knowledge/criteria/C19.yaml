@@ -41,5 +41,14 @@ boundaries:
   - "移除一切干扰"不是正确方向——信任线索不是干扰（退货政策、支付 logos 是决策依据），本条目与 C15 / C16 存在目标层张力，是典型 Trade-off 判例
   - 不能推断推荐对转化的净影响（E3）
 
+evidence_cases:
+  - case: WUI-285 (Kiss My Keto)
+    register: knowledge/evidence/wiserui-checkout-cases.yaml
+    design_fact: 弃购召回场景加入倒计时紧迫感弹窗 + 高对比红色 CTA
+    outcome: 该版本胜出（真实 A/B 测试）
+    usage: >-
+      反例证据：营销弹窗在弃购召回场景有效。说明本条目的"干扰"判断依赖用户状态与时机
+      （Conditional，非一律删除）——主任务路径中的干扰与流程外的召回激励需分别判断
+
 output_contract: Issue-Record-Schema v0.1
 validation_needs: [结算完成率, 营销元素点击率与完成时间的关系, 主任务路径的绕行操作数]

@@ -1,0 +1,46 @@
+# 评价条目 C25 · 间距节奏与信息分组
+# 归属：视觉表达（D4）；高频法则：Law of Proximity（WiserUI 300 例中 65 次引用）
+id: C25
+name: 间距节奏与信息分组
+version: 0.1
+domain: { primary: D4 信息与视觉表达, secondary: [D2 用户认知与体验] }
+perspective: 视觉表达
+
+applicable_context:
+  page_types: [任意含多信息块的页面]
+  user_tasks: [浏览, 核对, 比较选项]
+  user_states: [任意]
+
+evaluation_goal: 通过间距实现"相关者相近、无关者分离"的分组，间距遵循一致节奏
+
+check_questions:
+  - 逻辑上相关的信息（如金额与其构成明细）是否通过更近的间距分组？
+  - 无关信息块之间是否有足够的间距分离？
+  - 间距是否遵循一致的标度（如 4/8/16/24），还是任意取值？
+
+judgment_rules:
+  problem_if: 相关信息被大间距分离或无关信息紧贴（分组语义错误）；间距取值随意无节奏
+  not_a_problem_if: 分组与信息结构一致，间距呈可识别的倍数关系
+  severity_conditions:
+    - 金额与其说明分离导致误读（如把运费看成另一个商品的 price）
+
+sources:
+  - source: "格式塔接近性法则 (Law of Proximity)"
+    claim: "距离近的元素被知觉为同组；距离是分组的首要线索"
+    evidence_strength: E2
+    verification: 已核实（经典知觉理论）
+  - source: "WiserUI-Bench：Proximity 为 300 例中第 6 高频引用法则（65 次）"
+    claim: "专家在解释真实 A/B 胜负时高频使用接近性分组论证"
+    evidence_strength: E2（专家解释分布）
+    verification: 已核对（本地数据集统计）
+
+evidence_requirements:
+  e1_minimum: [页面截图, 信息块间距测量]
+  cannot_conclude_without: 分组语义错误是否实际导致误读（需用户测试）
+
+boundaries:
+  - 间距本身无绝对标准，判断锚定"分组是否匹配信息结构"
+  - 交互式展开/收起状态下的间距变化不在静态评审范围
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: [信息分组理解正确率, 核对任务的查找时间]

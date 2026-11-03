@@ -1,0 +1,46 @@
+# 评价条目 C26 · 颜色语义与状态传达
+# 归属：视觉表达（D4）
+id: C26
+name: 颜色语义与状态传达
+version: 0.1
+domain: { primary: D4 信息与视觉表达, secondary: [D5 无障碍与包容性] }
+perspective: 视觉表达
+
+applicable_context:
+  page_types: [任意含状态反馈的页面：错误、成功、选中、禁用]
+  user_tasks: [理解操作结果, 识别当前状态]
+  user_states: [任意, 含色觉障碍用户]
+
+evaluation_goal: 颜色使用遵循语义惯例，且不作为唯一的状态载体
+
+check_questions:
+  - 错误/警示是否用红系、成功是否用绿系等惯例语义？是否存在语义冲突（红色表示优惠）？
+  - 颜色是否是某种状态的唯一表达（无图标/文字辅助）？
+  - 页面主色与功能色数量是否克制（通常 ≤ 1 主色 + 语义色组）？
+
+judgment_rules:
+  problem_if: 颜色语义与惯例冲突导致误读；状态仅靠颜色区分（违反 WCAG 1.4.1）；色彩过多导致焦点涣散
+  not_a_problem_if: 语义色符合惯例且有多通道冗余（颜色 + 图标/文字）
+  severity_conditions:
+    - 错误状态仅用颜色表达（色觉障碍用户无法感知）
+
+sources:
+  - source: "WCAG 2.2 SC 1.4.1 Use of Color"
+    claim: "颜色不得作为传达信息的唯一手段"
+    evidence_strength: E1（明确规范）
+    verification: 已核实（w3.org/TR/WCAG22）
+  - source: "Jakob's Law（用户预期惯例）"
+    claim: "用户依据既有产品经验形成颜色语义预期（红=错误等），违反惯例增加学习成本"
+    evidence_strength: E2
+    verification: 已核实
+
+evidence_requirements:
+  e1_minimum: [状态设计的截图, 颜色使用清单]
+  cannot_conclude_without: 色觉障碍用户的实际识别表现
+
+boundaries:
+  - 品牌色策略不在本条目范围（对照任务卡暂不评审项）
+  - 不同文化区的颜色语义差异需按目标用户判断
+
+output_contract: Issue-Record-Schema v0.1
+validation_needs: [状态识别正确率, 色觉障碍用户测试]
