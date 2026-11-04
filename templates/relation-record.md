@@ -5,16 +5,20 @@
 ## 判定流程（五步决策树摘要）
 
 ```
-Step 0 对象锚定：无共享 UI 对象且无共享任务步骤 → 无关系（independent），不进入分析
-Step 1 事实层：observed_fact 直接冲突（无法同时为真）→ Contradiction（触发 E1 核查）
-             事实一致且问题判断同向、指向同一问题 → Support
-Step 2 策略层：建议互斥（一个移除另一个的作用对象）→ 转 Step 3
-             建议存在先后 / 包含关系 → Dependency
-             建议兼容 → 转 Step 3
-Step 3 目标层：共享有限资源（注意力/空间/信息密度/步骤/时间）且此消彼长 → Trade-off
-             共享改进目标且协同 → Complement
-Step 4 条件层：applies_to 不同、各自条件内均成立 → Conditional
-Step 5 兜底：→ Uncertain（必须附缺失证据清单，禁止作为偷懒出口）
+Step 0   对象锚定：无共享 UI 对象且无共享任务步骤 → 无关系（independent），不进入分析
+Step 0.5 语境对齐：核对方案版本 / 任务步骤 / 界面状态 / 适用人群（applies_to）
+         任一项不匹配 → Conditional（人群或状态不同、各自条件内成立）
+         或暂缓判定（版本不一致时先统一输入）——不得未对齐即判定冲突
+Step 1   事实层：observed_fact 直接冲突（无法同时为真）→ Contradiction（触发 E1 核查）
+         事实一致且问题判断同向、指向同一问题 → Support
+Step 2   策略层：建议互斥（一个移除另一个的作用对象）→ 转 Step 3
+         建议存在先后 / 包含关系 → Dependency
+         建议兼容 → 转 Step 3
+Step 3   目标层：共享有限资源（注意力/空间/信息密度/步骤/时间）
+         且能写明损害机制（「改动 X 改善 A，同时通过 ×× 机制损害 B」）→ Trade-off
+         仅资源竞争推测、无机制路径 → Uncertain（待验证，不判 Trade-off）
+         共享改进目标且协同 → Complement
+Step 4   兜底：→ Uncertain（必须附缺失证据清单，禁止作为偷懒出口）
 ```
 
 ## 模板
@@ -22,8 +26,11 @@ Step 5 兜底：→ Uncertain（必须附缺失证据清单，禁止作为偷懒
 ```yaml
 relation_id: REL-___
 record_pair: [C__-__, C__-__]
+context_alignment:        # 语境对齐结果（版本/步骤/状态/人群），不匹配项写明
+task_step_id:             # 跨页面/跨状态关系必填（如 payment→order_summary 切换链）
 primary_relation:         # Support / Contradiction / Complement / Trade-off / Dependency / Conditional / Uncertain
 analysis_layer:           # 事实 / 策略 / 目标
+damage_mechanism:         # Trade-off 必填：「改动 X 改善 A，同时通过 ×× 机制损害 B」
 judgment_basis:           # 引用具体字段值，禁止只写语义相似
   - "共享资源："
   - "A evaluation_goal=…；B evaluation_goal=…"

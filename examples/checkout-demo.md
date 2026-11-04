@@ -24,9 +24,10 @@ out_of_scope: 品牌调性、营销文案风格
 
 ## M1 · 视角配置清单
 
-**检索命中**（示意）：C01（主任务可发现性）、C04（优惠入口可发现性）、C05（优惠信息干扰）、C06（最终费用透明度）、C11（状态一致性）、C17（意外成本）、C20（选择负担）
+**检索命中**（示意）：C01（主任务可发现性*）、C04（优惠入口可发现性*）、C05（优惠信息干扰）、C06（最终费用透明度*）、C11（状态一致性*）、C17（意外成本）、C20（选择负担）
+> \* 标注条目暂无独立 YAML（待补全字段），本示例引用 `knowledge/index.md` 总览定义；正式评审优先启用有 YAML 的可执行条目
 
-**按 evaluation_goal 聚类 → 5 个候选视角**：
+**按 evaluation_goal 聚类 → 4 个候选视角**：
 
 | 候选视角 | 条目 | 评价目标 |
 |---|---|---|
@@ -39,13 +40,26 @@ out_of_scope: 品牌调性、营销文案风格
 过滤：`品牌调性` 按 out_of_scope 过滤（未进入清单）。
 **设计师确认：4 个视角全部保留。**
 
+**可验证映射（M1 步骤 6 · 防"只改视角名"）**
+
+| 任务目标 | 关键界面状态 | 检查条目 | 入选/排除理由 |
+|---|---|---|---|
+| 减少核对错误 | S1 订单确认（默认态） | C06 C17 C22 C25 | 金额核对依赖透明度与层级/分组 |
+| 提高结算效率 | S3 支付方式、S4 错误态 | C20 C11 C29 | 默认适配、状态保持、浮层侵入 |
+| 优惠理解 | S1→S2 入口与选择态 | C04 C05 | 可发现性 vs 干扰（经典张力） |
+| 品牌调性 | — | — | **排除**：任务卡 out_of_scope |
+
+> 验收方式：同一原型换任务卡（如「降低支付失败后的放弃」），上表的条目集合与关键状态应明显改变；若只换视角名称而检查内容不变，任务自适应未生效。
+
 ## M2 · Issue 记录（节选 3 条）
 
 ```yaml
 issue_id: C04-01
 criterion: C04
+evaluation_goal: 降低优惠查找成本（入口可发现）
+outcome: 发现问题
 ui_anchor: { frame: order_summary, region: 金额明细下方, element: 优惠入口（折叠态） }
-observed_fact: 优惠入口为弱化文字链，位于金额明细下方，首屏需向下滚动才可见（已核对截图 S1）
+observed_fact: 优惠入口为弱化文字链，位于金额明细下方，首屏需向下滚动才可见（已核对截图 S1；获取方式：截图估读，未做 Figma 属性实测）
 evidence_basis: Baymard Grocery Benchmark——"找优惠码"是测试中持续出现的问题；持有优惠码的用户总能找到入口，但弱入口增加查找成本
 judgment: 持有优惠券的用户可能需要更长时间定位优惠入口（E2）
 proposed_change: 提升优惠入口视觉层级，与金额明细同组呈现
@@ -58,8 +72,10 @@ validation_needs: [优惠发现率, 优惠入口查找时间]
 ```yaml
 issue_id: C05-01
 criterion: C05
+evaluation_goal: 保障结算主任务连续性
+outcome: 发现问题
 ui_anchor: { frame: order_summary, region: 金额明细下方, element: 优惠码输入框 }
-observed_fact: 优惠码输入框在默认视图中展开，位于金额明细与提交按钮之间（已核对截图 S1）
+observed_fact: 优惠码输入框在默认视图中展开，位于金额明细与提交按钮之间（已核对截图 S1；获取方式：截图估读）
 evidence_basis: Baymard Checkout Usability——显露的优惠码输入框可能促使部分用户暂停结算去寻找优惠码
 judgment: 对无优惠需求的用户，可能增加主任务路径上的注意力消耗（E2）
 proposed_change: 折叠优惠码输入框为弱化入口，保持可发现性（由 C04 独立评价）
@@ -72,8 +88,10 @@ validation_needs: [无优惠需求用户结算完成时间, 优惠发现率]
 ```yaml
 issue_id: C20-01
 criterion: C20
+evaluation_goal: 降低选择负担与切换成本
+outcome: 发现问题
 ui_anchor: { frame: payment, region: 支付方式列表, element: 默认推荐项与切换入口 }
-observed_fact: 支付方式列表首位为支付宝并默认选中；其他方式需点击"更多支付方式"展开（已核对截图 S3）
+observed_fact: 支付方式列表首位为支付宝并默认选中；其他方式需点击"更多支付方式"展开（已核对截图 S3；获取方式：截图估读，切换入口路径需当前版本复核）
 evidence_basis: C20 real_world_cases——默认项与用户持有资源不匹配时，切换入口可达性决定实际负担（E1 界面事实 + E2 负担推断）
 judgment: 默认支付方式与自身资源不匹配的用户可能需要额外操作完成支付，可能提高该人群的支付放弃风险（E2）
 proposed_change: 支付方式列表同屏展示 2–3 个常用项 + 记住用户上次选择
@@ -90,8 +108,10 @@ validation_needs: [非默认支付方式用户完成率, 支付方式切换耗�
 ```yaml
 relation_id: REL-001
 record_pair: [C04-01, C05-01]
+context_alignment: 同页同状态（order_summary 默认态）；适用人群不同（持券 vs 无券）——对齐后确认张力仍在目标层
 primary_relation: Trade-off
 analysis_layer: 目标层
+damage_mechanism: 强化入口（C04-01 建议）通过提升优惠区视觉层级挤占主任务路径注意力，损害 C05 的结算连续性目标
 judgment_basis:
   - "共享资源：注意力（order_summary 主任务路径）"
   - "C04 evaluation_goal=降低优惠查找成本；C05 evaluation_goal=保障结算连续性"
@@ -103,6 +123,8 @@ action: 转 QOC
 ```yaml
 relation_id: REL-002
 record_pair: [C20-01, C11-01]
+context_alignment: 跨页面关系（payment → order_summary 返回链）；C11-01 记录从略——S4→S1 走查推断"返回后优惠状态未保留"（示意，outcome: 证据不足）
+task_step_id: payment.switch_method → order_summary.return
 primary_relation: Dependency
 analysis_layer: 策略层
 judgment_basis:
